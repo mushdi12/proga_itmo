@@ -38,7 +38,7 @@ public class Main {
         Places office = new Places(" контору");
         Places bench = new Places("лавочке");
 
-
+        System.out.print("======================================================================\n");
         //- 1 предложение
         dunno.getAdverbsBefore("Вскоре");
         work.getAdditionBefore("постоянную");
@@ -107,8 +107,14 @@ public class Main {
         maid.doSomethingWithAfter(Actions.COMES,office);
         empty.getAdverbsBefore(", на руках у которой");
         empty.doSomethingWithAfter(Actions.SIT, dog);
-        System.out.print(" с головы до хвоста покрытая рыженькими кудряшками. ");
+        System.out.println(" с головы до хвоста покрытая рыженькими кудряшками. ");
 
+        //проверка на одного и того же человека с ЧЕРЕЗ РЕГИСТР
+        Entity e1 = new Entity("Name1");
+        Entity e2 = new Entity("Name1");
+
+        System.out.println(e1.equals(e2));
+        System.out.print("======================================================================\n");
 
 
 
