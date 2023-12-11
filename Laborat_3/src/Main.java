@@ -1,128 +1,113 @@
-import Enums.Location;
-import Humans.Action;
-import Objects.Humans;
-import Objects.Place;
-import Objects.Things;
-
-import javax.xml.crypto.dom.DOMCryptoContext;
+import enums.Actions;
+import objects.*;
 
 public class Main {
     public static void main(String[] args) {
         // живые сущности
-        Humans Dunno = new Humans("Незнайка");
-        Humans him = new Humans("него");
-        Humans her = new Humans("неё");
-        Humans he = new Humans("он");
-        Humans his = new Humans(" ему");
-        Humans He = new Humans("Oн");
-        Humans whichOne = new Humans("которой");
-        Humans The_poodle = new Humans("Белый Пудель");
-        Humans shorties = new Humans("коротышек");
-        Humans employee = new Humans("Cотрудник");
-        Humans shor = new Humans(" коротышку");
-        Humans shorty = new Humans("Kоротышка");
-        Humans the_Maid = new Humans("Cлужанка");
-        Humans invisible = new Humans("");
+        Entity dunno = new Entity("Незнайка");
+        Entity lows = new Entity("коротышек");
+        Entity employee = new Entity("сотрудник");
+        Entity shorties = new Entity("коротышку");
+        Entity shorty = new Entity("Коротышка");
+        Entity poodle = new Entity("пудель");
+        Entity hostess = new Entity("хозяйку");
+        Entity maid = new Entity("служанка");
+        Entity dog = new Entity("собачонка");
 
-        // неживые сущности
-        Things the_dody = new Things("собачонка");
-        Things work = new Things("работу");
-        Things possibility = new Things(" надежда");
-        Things cash = new Things("сумму");
-        Things treatment = new Things("оплату");
-        Things signboard = new Things(" вывеску");
-        Things boldness = new Things("смелости");
-        Things phone = new Things(" по телефону");
-        Things room = new Things(" в комнатe");
-        Things lv = new Things("лавочке");
-        Things door_thing = new Things(" в дверь");
-        Things The_hat = new Things("шляпе");
-        Things shopping_cart = new Things("корзину");
-        Things po = new Things("по ");
-        Things the_Hostess = new Things("хозяйку");
+        // местоимение
+        Pronoun him = new Pronoun("него");
+        Pronoun he = new Pronoun("он");
+        Pronoun which_one = new Pronoun("которой");
 
+        // пустые
+        Empty empty = new Empty("");
 
-        //  места
-        Place street = new Place(" по улице");
-        Place room_1 = new Place(" в комнате");
+        // неживые объекты и понятия
+        Subject work = new Subject("работу");
+        Subject hope = new Subject(" надежда");
+        Subject money = new Subject("сумму денег");
+        Subject payment = new Subject("оплату");
+        Subject title = new Subject("надпись");
+        Subject phone = new Subject("телефону");
+        Subject door_subject = new Subject("дверь");
+
+        // места
+        Places street = new Places(" улице");
+        Places door = new Places(" дверь");
+        Places room = new Places(" комнате");
+        Places office = new Places(" контору");
+        Places bench = new Places("лавочке");
 
 
-
-
-        // --1--
-        work.getAddition("постоянную");
-        cash.getAddition("такую");
-        Dunno.activity(Action.GoWork, work);
-        System.out.print(",и у ");
-        him.activity(Action.appeared,possibility);
+        //- 1 предложение
+        dunno.getAdverbsBefore("Вскоре");
+        work.getAdditionBefore("постоянную");
+        dunno.doSomethingWithAfter(Actions.WORK, work);
+        System.out.print(", и у ");
+        him.doSomethingWithAfter(Actions.APPEARED, hope);
         System.out.print(",что ");
-        he.activity(Action.MakeMoney,cash);
+        money.getAdditionBefore("такую");
+        he.doSomethingWithAfter(Actions.EARN, money);
         System.out.print(", ");
-        whichOne.activity(Action.enough,treatment);
-        System.out.print(" лечения. ");
+        payment.getAdditionAfter("лечения");
+        which_one.doSomethingWithAfter(Actions.ENOUGH, payment);
+        System.out.print(". ");
 
-        // --2--
-        Dunno.getCoordinate(street);
-        Dunno.activity(Action.Walk);
+        //- 2 предложение
+        he.getAdverbsBefore("Однажды");
+        he.doSomethingWithAfter(Actions.WALK, street);
+        System.out.print(", и");
+        title.getAdditionAfter(": \"Контора по найму собачьих нянь\"");
+        empty.doSomethingWithAfter(Actions.SEE, title);
+        System.out.println(".");
+
+        //- 3 предложение
+        dunno.getAdverbsBefore("Набравшись смелости,");
+        dunno.doSomethingWithAfter(Actions.COME, door);
         System.out.print(" и");
-        invisible.activity(Action.See,signboard);
-        System.out.print(", на ");
-        whichOne.activity(Action.written);
-        System.out.println(" \"Контора по найму собачьих нянь\". ");
-
-        // --3--
-        He.activity(Action.entered,door_thing);
-        System.out.print(" и");
-        invisible.activity(Action.appear,room);
-        System.out.print(", где");
-        shorties.getAddition("несколько");
-        lv.getAddition("на длинной");
-        shorties.activity(Action.sitting,lv);
+        empty.doSomethingWithAfter(Actions.APPEAR, room);
+        System.out.print(", где ");
+        lows.getAdverbsBefore("несколько");
+        bench.getAdditionBefore("длинной");
+        lows.doSomethingWithAfter(Actions.SITS, bench);
         System.out.print(". ");
 
-        // --4--
-        employee.getCoordinate(room_1);
-        employee.activity(Action.sit);
-        System.out.print(" и");
-        invisible.activity(Action.talking,phone);
+        //- 4 предложение
+        employee.getAdverbsBefore("В конце комнаты");
+        employee.doSomethingAfter(Actions.SIT);
+        System.out.print("и");
+        phone.getAdditionBefore("с кем-то по");
+        empty.doSomethingWithAfter(Actions.TALK, phone);
         System.out.print(". ");
 
-        // --5--
-        Dunno.activity(Action.asked,shor);
-        System.out.println(", - кто такие собачьи няни и для чего их нанимают?");
+        //- 5 предложение
+        dunno.getAdditionBefore("Присев на краю лавочки,");
+        dunno.doSomethingWithAfter(Actions.ASK, shorties);
+        System.out.println(" :");
+        System.out.print("Кто такие собачьи няни и для чего их нанимают? ");
 
-        // --6--
-        shorty.activity(Action.said,his);
-        System.out.print(": в это время дверь");
-        invisible.activity(Action.opened);
-        System.out.print(", ");
-        The_poodle.activity(Action.entered);
-        System.out.print(". ");
+        //- 6 предложение
+        shorty.doSomethingAfter(Actions.ANSWER);
+        System.out.print(": ");
+        door_subject.getAdverbsBefore("Как раз в это время");
+        door_subject.doSomethingAfter(Actions.BOUGHT);
+        System.out.print(",и ");
+        poodle.getAdditionBefore("большой белый");
+        poodle.doSomethingWithAfter(Actions.COME,office);
+        System.out.println(". ");
 
-        // --7--
-        the_Hostess.getAddition("на цепочке");
-        He.activity(Action.dragged,the_Hostess);
-        System.out.print(". ");
+        //- 7 предложение
+        System.out.print("И ");
+        he.getAdditionAfter("за собой на цепочке");
+        he.doSomethingWithAfter(Actions.DRAGGED,hostess);
+        System.out.print(" в пышном газовом платье и большой модной шляпе, напоминавшей корзину с цветами. ");
 
-        // --8--
-        the_Maid.activity(Action.entereds);
-        the_dody.getAddition(" курносая");
-        System.out.print(", на руках у ");
-        her.activity(Action.sits,the_dody);
-        System.out.print(". ");
-
-
-
-
-
-
-
-
-
-
-
-
-
+        //- 8 предложение
+        maid.getAdverbsBefore("Вслед за хозяйкой");
+        maid.doSomethingWithAfter(Actions.COMES,office);
+        empty.getAdverbsBefore(", на руках у которой");
+        empty.doSomethingWithAfter(Actions.SIT, dog);
+        System.out.print(" с головы до хвоста покрытая рыженькими кудряшками. ");
 
 
 
@@ -131,4 +116,10 @@ public class Main {
 
     }
 }
+
+
+
+
+
+
 
