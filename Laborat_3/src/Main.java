@@ -40,7 +40,7 @@ public class Main {
 
         System.out.print("======================================================================\n");
         //- 1 предложение
-        dunno.getAdverbsBefore("Вскоре");
+        dunno.getAdditionBefore("Вскоре");
         work.getAdditionBefore("постоянную");
         dunno.doSomethingWithAfter(Actions.WORK, work);
         System.out.print(", и у ");
@@ -54,7 +54,7 @@ public class Main {
         System.out.print(". ");
 
         //- 2 предложение
-        he.getAdverbsBefore("Однажды");
+        he.getAdditionBefore("Однажды");
         he.doSomethingWithAfter(Actions.WALK, street);
         System.out.print(", и");
         title.getAdditionAfter(": \"Контора по найму собачьих нянь\"");
@@ -62,18 +62,18 @@ public class Main {
         System.out.println(".");
 
         //- 3 предложение
-        dunno.getAdverbsBefore("Набравшись смелости,");
+        dunno.getAdditionBefore("Набравшись смелости,");
         dunno.doSomethingWithAfter(Actions.COME, door);
         System.out.print(" и");
         empty.doSomethingWithAfter(Actions.APPEAR, room);
         System.out.print(", где ");
-        lows.getAdverbsBefore("несколько");
+        lows.getAdditionBefore("несколько");
         bench.getAdditionBefore("длинной");
         lows.doSomethingWithAfter(Actions.SITS, bench);
         System.out.print(". ");
 
         //- 4 предложение
-        employee.getAdverbsBefore("В конце комнаты");
+        employee.getAdditionBefore("В конце комнаты");
         employee.doSomethingAfter(Actions.SIT);
         System.out.print("и");
         phone.getAdditionBefore("с кем-то по");
@@ -89,7 +89,7 @@ public class Main {
         //- 6 предложение
         shorty.doSomethingAfter(Actions.ANSWER);
         System.out.print(": ");
-        door_subject.getAdverbsBefore("Как раз в это время");
+        door_subject.getAdditionBefore("Как раз в это время");
         door_subject.doSomethingAfter(Actions.BOUGHT);
         System.out.print(",и ");
         poodle.getAdditionBefore("большой белый");
@@ -103,9 +103,9 @@ public class Main {
         System.out.print(" в пышном газовом платье и большой модной шляпе, напоминавшей корзину с цветами. ");
 
         //- 8 предложение
-        maid.getAdverbsBefore("Вслед за хозяйкой");
+        maid.getAdditionBefore("Вслед за хозяйкой");
         maid.doSomethingWithAfter(Actions.COMES,office);
-        empty.getAdverbsBefore(", на руках у которой");
+        empty.getAdditionBefore(", на руках у которой");
         empty.doSomethingWithAfter(Actions.SIT, dog);
         System.out.println(" с головы до хвоста покрытая рыженькими кудряшками. ");
 

@@ -1,12 +1,12 @@
 package objects;
 
 import enums.Actions;
-import interfaces.Additions;
-import interfaces.Adverbs;
+import interfaces.AdditionAfter;
+import interfaces.AdditionBefore;
 
 import java.util.Objects;
 
-public class Pronoun extends Basic implements Additions, Adverbs {
+public class Pronoun extends Basic implements AdditionAfter, AdditionBefore {
 
     @Override
     public String toString() {
@@ -80,18 +80,5 @@ public class Pronoun extends Basic implements Additions, Adverbs {
         super.name = this.name;
         super.name = this.name + " " + addition;
     }
-
-    @Override
-    public void getAdverbsAfter(String adverbs) {
-        super.name = this.name;
-        super.name = this.name + " " + adverbs;
-    }
-
-    @Override
-    public void getAdverbsBefore(String adverbs) {
-        super.name = this.name;
-        super.name = adverbs + " " + this.name;
-    }
-
 
 }

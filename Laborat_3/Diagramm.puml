@@ -1,0 +1,89 @@
+@startuml
+class objects.Places {
+- String name
++ String toString()
++ boolean equals(Object)
++ int hashCode()
++ void getAdditionBefore(String)
++ void getAdditionAfter(String)
+}
+interface interfaces.AdditionBefore {
+~ void getAdditionBefore(String)
+}
+class objects.Entity {
+- String name
++ String toString()
++ boolean equals(Object)
++ int hashCode()
++ void doSomethingWithAfter(Actions,Object)
++ void doSomethingAfter(Actions)
++ void getAdditionBefore(String)
+}
+class objects.Empty {
+- String name
++ String toString()
++ boolean equals(Object)
++ int hashCode()
++ void doSomethingWithAfter(Actions,Object)
++ void getAdditionBefore(String)
+}
+interface interfaces.AdditionAfter {
+~ void getAdditionAfter(String)
+}
+class objects.Pronoun {
+- String name
++ String toString()
++ boolean equals(Object)
++ int hashCode()
++ void doSomethingWithBefore(Actions,Object)
++ void doSomethingWithAfter(Actions,Object)
++ void getAdditionBefore(String)
++ void getAdditionAfter(String)
+}
+class Main {
++ {static} void main(String[])
+}
+abstract class objects.Basic {
+# String name
+}
+class objects.Subject {
+- String name
++ String toString()
++ boolean equals(Object)
++ int hashCode()
++ void getAdditionBefore(String)
++ void doSomethingAfter(Actions)
+}
+enum enums.Actions {
++  WORK
++  EARN
++  APPEARED
++  ENOUGH
++  WALK
++  SEE
++  COME
++  APPEAR
++  SIT
++  SITS
++  TALK
++  ASK
++  ANSWER
++  BOUGHT
++  DRAGGED
++  COMES
+}
+
+
+interfaces.AdditionAfter <|.. objects.Places
+interfaces.AdditionBefore <|.. objects.Places
+objects.Basic <|-- objects.Places
+interfaces.AdditionBefore <|.. objects.Entity
+objects.Basic <|-- objects.Entity
+interfaces.AdditionBefore <|.. objects.Empty
+objects.Basic <|-- objects.Empty
+interfaces.AdditionAfter <|.. objects.Pronoun
+interfaces.AdditionBefore <|.. objects.Pronoun
+objects.Basic <|-- objects.Pronoun
+interfaces.AdditionBefore <|.. objects.Subject
+objects.Basic <|-- objects.Subject
+@enduml

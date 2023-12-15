@@ -1,11 +1,11 @@
 package objects;
 
-import enums.Actions;
-import interfaces.Additions;
+import interfaces.AdditionAfter;
+import interfaces.AdditionBefore;
 
 import java.util.Objects;
 
-public class Places extends Basic implements Additions {
+public class Places extends Basic implements AdditionAfter, AdditionBefore {
 
     @Override
     public String
