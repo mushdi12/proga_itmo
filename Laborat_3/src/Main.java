@@ -1,4 +1,5 @@
 import enums.Actions;
+import interfaces.MyFunctionalInterface;
 import objects.*;
 
 public class Main {
@@ -13,6 +14,7 @@ public class Main {
         Entity hostess = new Entity("хозяйку");
         Entity maid = new Entity("служанка");
         Entity dog = new Entity("собачонка");
+        Entity test = new Entity("");
 
         // местоимение
         Pronoun him = new Pronoun("него");
@@ -38,7 +40,7 @@ public class Main {
         Places office = new Places(" контору");
         Places bench = new Places("лавочке");
 
-        System.out.print("======================================================================\n");
+
         //- 1 предложение
         dunno.getAdditionBefore("Вскоре");
         work.getAdditionBefore("постоянную");
@@ -109,17 +111,18 @@ public class Main {
         empty.doSomethingWithAfter(Actions.SIT, dog);
         System.out.println(" с головы до хвоста покрытая рыженькими кудряшками. ");
 
-        //проверка на одного и того же человека с ЧЕРЕЗ РЕГИСТР
-        Entity e1 = new Entity("Name1");
-        Entity e2 = new Entity("Name1");
-
-        System.out.println(e1.equals(e2));
-        System.out.print("======================================================================\n");
+        System.out.println("ПРОВЕРКА ИСКЛЮЧЕНИЙ");
+        dunno.doSomethingWithAfter(Actions.COME,null);
+        test.doSomethingWithAfter(Actions.COME,room);
 
 
 
-
-
+        //MyFunctionalInterface okey = (v, z) -> (v*z);
+        //MyFunctionalInterface okey = Test::pr;
+        //System.out.print("18 * 19 = ");
+        //System.out.println(okey.pr(18,9));
+        //System.out.print("Хэш код: ");
+        //System.out.println(dunno.hashCode());
     }
 }
 

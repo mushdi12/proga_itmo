@@ -26,44 +26,20 @@ public class Pronoun extends Basic implements AdditionAfter, AdditionBefore {
         return Objects.hash(name);
     }
 
-    final private String name;
 
     public Pronoun(String name) {
         super(name);
-        this.name = name;
-    }
-
-    public void doSomethingWithBefore(Actions act, Object o) {
-        switch (act) {
-
-
-        }
-
     }
 
     public void doSomethingWithAfter(Actions act, Object o) {
         switch (act) {
-            case APPEARED:
-                System.out.print(super.name + " появилась" + o);
-                break;
-            case EARN:
-                System.out.print(super.name + " заработает" + o);
-                break;
-            case WALK:
-                System.out.print(super.name + " шел по" + o);
-                break;
-            case ENOUGH:
-                System.out.print(super.name + " хватит на" + o);
-                break;
-            case SEE:
-                System.out.print(super.name + " увидел" + o);
-                break;
-            case APPEAR:
-                System.out.print(super.name + " очутился в" + o);
-                break;
-            case DRAGGED:
-                System.out.print(super.name + " втащил " + o);
-                break;
+            case APPEARED -> System.out.print(name + " появилась" + o);
+            case EARN -> System.out.print(name + " заработает" + o);
+            case WALK -> System.out.print(name + " шел по" + o);
+            case ENOUGH -> System.out.print(name + " хватит на" + o);
+            case SEE -> System.out.print(name + " увидел" + o);
+            case APPEAR -> System.out.print(name + " очутился в" + o);
+            case DRAGGED -> System.out.print(name + " втащил " + o);
         }
 
     }

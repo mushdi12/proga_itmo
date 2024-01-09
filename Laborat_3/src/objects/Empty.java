@@ -10,7 +10,7 @@ public class Empty extends Basic implements  AdditionBefore {
 
     @Override
     public String toString() {
-        return this.name;
+        return name;
     }
 
     @Override
@@ -26,35 +26,23 @@ public class Empty extends Basic implements  AdditionBefore {
         return Objects.hash(name);
     }
 
-    final private String name;
-
     public Empty(String name) {
         super(name);
-        this.name = name;
     }
 
     public void doSomethingWithAfter(Actions act, Object o) {
         switch (act) {
-            case SEE:
-                System.out.print(super.name + " увидел" + o);
-                break;
-            case APPEAR:
-                System.out.print(super.name + " очутился в" + o);
-                break;
-            case TALK:
-                System.out.print(super.name + " разговаривал" + o);
-                break;
-            case SIT:
-                System.out.print(super.name + "сидела " + o);
-                break;
+            case SEE -> System.out.print(name + " увидел" + o);
+            case APPEAR -> System.out.print(name + " очутился в" + o);
+            case TALK -> System.out.print(name + " разговаривал" + o);
+            case SIT -> System.out.print(name + "сидела " + o);
         }
 
     }
 
     @Override
     public void getAdditionBefore(String addition) {
-        super.name = this.name;
-        super.name = addition + " " + this.name;
+            name = addition + " " + name;
     }
 
 

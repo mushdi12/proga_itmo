@@ -27,11 +27,9 @@ public class Subject extends Basic implements AdditionAfter, AdditionBefore {
         return Objects.hash(name);
     }
 
-    final private String name;
 
     public Subject(String name) {
         super(name);
-        this.name = name;
     }
 
     @Override

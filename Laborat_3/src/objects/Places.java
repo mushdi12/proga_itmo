@@ -8,9 +8,8 @@ import java.util.Objects;
 public class Places extends Basic implements AdditionAfter, AdditionBefore {
 
     @Override
-    public String
-    toString() {
-        return super.name;
+    public String toString() {
+        return name;
     }
 
     @Override
@@ -26,23 +25,19 @@ public class Places extends Basic implements AdditionAfter, AdditionBefore {
         return Objects.hash(name);
     }
 
-    final private String name;
 
     public Places(String name) {
         super(name);
-        this.name = name;
     }
 
     @Override
     public void getAdditionBefore(String addition) {
-        super.name = this.name;
-        super.name = " " + addition + " " + this.name;
+        name = " " + addition + " " + name;
     }
 
     @Override
     public void getAdditionAfter(String addition) {
-        super.name = this.name;
-        super.name = " " + this.name + " " + addition;
+        name = " " + name + " " + addition;
     }
 
 }

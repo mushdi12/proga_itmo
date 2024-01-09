@@ -1,17 +1,27 @@
 package objects;
 
 import enums.Actions;
-import interfaces.AdditionAfter;
+import exception.Checked;
+import exception.Unchecked;
 import interfaces.AdditionBefore;
 
 
 import java.util.Objects;
 
 public class Entity extends Basic implements AdditionBefore {
-
     @Override
     public String toString() {
-        return this.name;
+        return name;
+    }
+    public Entity(String name) {
+        super(name);
+        try {
+            cheekNullSecond(name);
+            this.name = "a";
+        }
+        catch (Checked a){
+            System.out.println(a.getMessage());
+        }
     }
 
     @Override
@@ -27,52 +37,43 @@ public class Entity extends Basic implements AdditionBefore {
         return Objects.hash(name);
     }
 
-    final private String name;
 
-    public Entity(String name) {
-        super(name);
-        this.name = name;
-    }
 
     public void doSomethingWithAfter(Actions act, Object o) {
-        switch (act) {
-            case WORK:
-                System.out.print(super.name + " утроился на" + o);
-                break;
-            case COME:
-                System.out.print(super.name + " вошел в" + o);
-                break;
-            case SITS:
-                System.out.print(super.name + " сидели на" + o);
-                break;
-            case ASK:
-                System.out.print(super.name + " спросил " + o);
-                break;
-            case COMES:
-                System.out.print(super.name + " вошла в" + o);
-                break;
-
-
+        try {
+            cheekNull(o);
+            switch (act) {
+                case WORK -> System.out.print(name + " устроился на" + o);
+                case COME -> System.out.print(name + " вошел в" + o);
+                case SITS -> System.out.print(name + " сидели на" + o);
+                case ASK -> System.out.print(name + " спросил " + o);
+                case COMES -> System.out.print(name + " вошла в" + o);
+            }
+        }
+        catch (Unchecked a){
+            System.out.println(a.getMessage());
         }
 
     }
 
     public void doSomethingAfter(Actions act) {
         switch (act) {
-            case SIT:
-                System.out.print(super.name + " сидел ");
-                break;
-            case ANSWER:
-                System.out.print(super.name + " ответил");
-                break;
+            case SIT -> System.out.print(name + " сидел ");
+            case ANSWER -> System.out.print(name + " ответил");
         }
     }
 
 
     @Override
     public void getAdditionBefore(String addition) {
-        super.name = this.name;
-        super.name = addition + " " + this.name;
+        name = addition + " " + name;
     }
-
+    public void cheekNull(Object a){
+        if (a == null)
+            throw new Unchecked("!!! TREVOGA !!!");
+    }
+    public void cheekNullSecond(Object a) throws Checked{
+        if (a == null)
+            throw new Checked("!!! trevoga !!!");
+    }
 }
